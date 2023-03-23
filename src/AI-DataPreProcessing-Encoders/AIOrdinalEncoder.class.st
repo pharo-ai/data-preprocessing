@@ -34,5 +34,5 @@ AIOrdinalEncoder >> fitAndTransform: aCollection [
 { #category : #api }
 AIOrdinalEncoder >> transform: aCollection [
 
-	^ aCollection withIndexCollect: [ :subColl :rowIndex | subColl withIndexCollect: [ :element :columnIndex | (categories at: columnIndex) indexOf: element ] ]
+	^ aCollection collect: [ :subColl | subColl withIndexCollect: [ :element :columnIndex | (self categories at: columnIndex) indexOf: element ] ]
 ]

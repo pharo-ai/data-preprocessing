@@ -1,13 +1,13 @@
 SmalltalkCISpec {
   #loading : [
     SCIMetacelloLoadSpec {
-      #baseline : 'AIDataImputers',
+      #baseline : 'AIDataPreprocessing',
       #directory : 'src'
     }
   ],
   #testing : {
     #coverage : {
-      #packages : [ 'AI-DataImputers*' ]
+      #packages : [ 'AI-DataPreprocessing*' ]
     }
   }
 }

@@ -1,23 +1,26 @@
+"
+This class contains tests
+"
 Class {
-	#name : #AIOrdinalEncoderTest,
+	#name : #AIOrdinalEncoderDataFrameTest,
 	#superclass : #TestCase,
 	#instVars : [
 		'collection',
 		'encoder'
 	],
-	#category : #'AI-DataPreProcessing-Encoders-Tests'
+	#category : #'AI-DataPreProcessing-Encoders-DataFrame-Tests'
 }
 
 { #category : #running }
-AIOrdinalEncoderTest >> setUp [
+AIOrdinalEncoderDataFrameTest >> setUp [
 
 	super setUp.
-	collection := #( #( 'Female' 3 ) #( 'Male' 1 ) #( 'Female' 2 ) ).
+	collection := DataFrame withRows: #( #( 'Female' 3 ) #( 'Male' 1 ) #( 'Female' 2 ) ).
 	encoder := AIOrdinalEncoder new
 ]
 
 { #category : #tests }
-AIOrdinalEncoderTest >> testFit [
+AIOrdinalEncoderDataFrameTest >> testFit [
 
 	encoder fit: collection.
 
@@ -27,14 +30,7 @@ AIOrdinalEncoderTest >> testFit [
 ]
 
 { #category : #tests }
-AIOrdinalEncoderTest >> testFit1DColl [
-
-	collection := #( 1 2 nil ).
-	self should: [ encoder fit: collection ] raise: AssertionFailure
-]
-
-{ #category : #tests }
-AIOrdinalEncoderTest >> testFitAndTransform [
+AIOrdinalEncoderDataFrameTest >> testFitAndTransform [
 
 	| result |
 	result := encoder fitAndTransform: collection.
@@ -45,17 +41,9 @@ AIOrdinalEncoderTest >> testFitAndTransform [
 ]
 
 { #category : #tests }
-AIOrdinalEncoderTest >> testTransform [
+AIOrdinalEncoderDataFrameTest >> testTransform [
 
 	encoder categories: #( #( 'Female' 'Male' ) #( 3 1 2 ) ).
 
-	self assert: (encoder transform: #( #( 'Male' 1 ) #( 'Female' 2 ) )) equals: #( #( 2 2 ) #( 1 3 ) )
-]
-
-{ #category : #tests }
-AIOrdinalEncoderTest >> testTransform1DColl [
-
-	collection := #( 'Female' 'Male' 'Female' ).
-	encoder categories: #( #( 'Female' 'Male' ) ).
-	self should: [ encoder transform: collection ] raise: AssertionFailure
+	self assert: (encoder transform: (DataFrame withRows: #( #( 'Male' 1 ) #( 'Female' 2 ) ))) equals: (DataFrame withRows: #( #( 2 2 ) #( 1 3 ) ))
 ]

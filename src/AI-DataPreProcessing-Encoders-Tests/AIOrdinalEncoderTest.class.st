@@ -27,6 +27,13 @@ AIOrdinalEncoderTest >> testFit [
 ]
 
 { #category : #tests }
+AIOrdinalEncoderTest >> testFit1DColl [
+
+	collection := #( 1 2 nil ).
+	self should: [ encoder fit: collection ] raise: AssertionFailure
+]
+
+{ #category : #tests }
 AIOrdinalEncoderTest >> testFitAndTransform [
 
 	| result |
@@ -45,4 +52,12 @@ AIOrdinalEncoderTest >> testTransform [
 	encoder categories: #( #( 'Female' 'Male' ) #( 3 1 2 ) ).
 
 	self assert: (encoder transform: #( #( 'Male' 1 ) #( 'Female' 2 ) )) equals: #( #( 2 2 ) #( 1 3 ) )
+]
+
+{ #category : #tests }
+AIOrdinalEncoderTest >> testTransform1DColl [
+
+	collection := #( 'Female' 'Male' 'Female' ).
+	encoder categories: #( #( 'Female' 'Male' ) ).
+	self should: [ encoder transform: collection ] raise: AssertionFailure
 ]

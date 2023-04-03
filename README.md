@@ -39,11 +39,11 @@ If you are new to baselines and Metacello, check out this wonderful [Baselines](
 It is possible to encode a 2D collection with numerical categories easily like this:
 
 ```st
-	| collection |
-	collection := #( #( 'Female' 3 ) #( 'Male' 1 ) #( 'Female' 2 ) ).
+| collection |
+collection := #( #( 'Female' 3 ) #( 'Male' 1 ) #( 'Female' 2 ) ).
 	
-	AIOrdinalEncoder new
-		fitAndTransform: collection.  "#(#(2 3) #(1 1) #(2 2))"
+AIOrdinalEncoder new
+	fitAndTransform: collection.  "#(#(2 3) #(1 1) #(2 2))"
 ```
 
 For more details check the documentation bellow.
@@ -60,43 +60,43 @@ All values of the collection to transform must be present in the collection used
 I can be use like this:
 
 ```st
-	| collection |
-	collection := #( #( 'Female' 3 ) #( 'Male' 1 ) #( 'Female' 2 ) ).
+| collection |
+collection := #( #( 'Female' 3 ) #( 'Male' 1 ) #( 'Female' 2 ) ).
 	
-	AIOrdinalEncoder new
-		fit: collection;
-		transform: collection.  "#(#(2 3) #(1 1) #(2 2))"
+AIOrdinalEncoder new
+	fit: collection;
+	transform: collection.  "#(#(2 3) #(1 1) #(2 2))"
 ```
 
 Or
 
 ```st
-	| collection |
-	collection := #( #( 'Female' 3 ) #( 'Male' 1 ) #( 'Female' 2 ) ).
+| collection |
+collection := #( #( 'Female' 3 ) #( 'Male' 1 ) #( 'Female' 2 ) ).
 	
-	AIOrdinalEncoder new
-		fitAndTransform: collection.  "#(#(2 3) #(1 1) #(2 2))"
+AIOrdinalEncoder new
+	fitAndTransform: collection.  "#(#(2 3) #(1 1) #(2 2))"
 ```
 
 I can also be used on a `DataFrame` in the same way:
 
 ```st
-	| collection |
-	collection := DataFrame withRows: #( #( 'Female' 3 ) #( 'Male' 1 ) #( 'Female' 2 ) ).
+| collection |
+collection := DataFrame withRows: #( #( 'Female' 3 ) #( 'Male' 1 ) #( 'Female' 2 ) ).
 	
-	AIOrdinalEncoder new
-		fitAndTransform: collection.  "#(#(2 3) #(1 1) #(2 2))"
+AIOrdinalEncoder new
+	fitAndTransform: collection.  "#(#(2 3) #(1 1) #(2 2))"
 ```
 
 The user can also give directly the categories to use like this:
 
 ```st
-	| collection |
-	collection := #( #( 'Female' 3 ) #( 'Male' 1 ) #( 'Female' 2 ) ).
+| collection |
+collection := #( #( 'Female' 3 ) #( 'Male' 1 ) #( 'Female' 2 ) ).
 	
-	AIOrdinalEncoder new
-		categories: #( #( 'Female' 'Male' ) #( 3 1 2 ) );
-		transform: collection. 	"#(#(1 1) #(2 2) #(1 3))"
+AIOrdinalEncoder new
+	categories: #( #( 'Female' 'Male' ) #( 3 1 2 ) );
+	transform: collection. 	"#(#(1 1) #(2 2) #(1 3))"
 ```
 
 In that case, the index of each elements will be used as a category.

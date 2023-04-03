@@ -8,6 +8,12 @@ Class {
 }
 
 { #category : #accessing }
+AIOrdinalEncoder class >> fitAndTransform: aCollection [
+
+	^ self new fitAndTransform: aCollection
+]
+
+{ #category : #accessing }
 AIOrdinalEncoder >> categories [
 	^ categories
 ]
@@ -28,20 +34,33 @@ AIOrdinalEncoder >> ensureIs2D: aCollection [
 AIOrdinalEncoder >> fit: aCollection [
 
 	self ensureIs2D: aCollection.
-	categories := aCollection asArrayOfColumns collect: [ :column | column asSet asArray ]
+	self privateFit: aCollection
 ]
 
 { #category : #accessing }
 AIOrdinalEncoder >> fitAndTransform: aCollection [
 
 	^ self
-		  fit: aCollection;
-		  transform: aCollection
+		  ensureIs2D: aCollection;
+		  privateFit: aCollection;
+		  privateTransform: aCollection
+]
+
+{ #category : #api }
+AIOrdinalEncoder >> privateFit: aCollection [
+
+	categories := aCollection asArrayOfColumns collect: [ :column | column asSet asArray ]
+]
+
+{ #category : #api }
+AIOrdinalEncoder >> privateTransform: aCollection [
+
+	^ aCollection dataPreProcessingEncodeWith: self
 ]
 
 { #category : #api }
 AIOrdinalEncoder >> transform: aCollection [
 
 	self ensureIs2D: aCollection.
-	^ aCollection collect: [ :subColl | subColl withIndexCollect: [ :element :columnIndex | (self categories at: columnIndex) indexOf: element ] ]
+	^ self privateTransform: aCollection
 ]

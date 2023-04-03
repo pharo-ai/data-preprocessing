@@ -15,11 +15,21 @@ I can be use like this:
 		transform: collection.  ""#(#(2 3) #(1 1) #(2 2))""
 ```
 
-Or:
+Or
 
 ```st
 	| collection |
 	collection := #( #( 'Female' 3 ) #( 'Male' 1 ) #( 'Female' 2 ) ).
+	
+	AIOrdinalEncoder new
+		fitAndTransform: collection.  ""#(#(2 3) #(1 1) #(2 2))""
+```
+
+I can also be used on a `DataFrame` in the same way:
+
+```st
+	| collection |
+	collection := DataFrame withRows: #( #( 'Female' 3 ) #( 'Male' 1 ) #( 'Female' 2 ) ).
 	
 	AIOrdinalEncoder new
 		fitAndTransform: collection.  ""#(#(2 3) #(1 1) #(2 2))""

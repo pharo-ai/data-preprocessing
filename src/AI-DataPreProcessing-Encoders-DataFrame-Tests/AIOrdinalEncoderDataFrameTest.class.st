@@ -47,3 +47,11 @@ AIOrdinalEncoderDataFrameTest >> testTransform [
 
 	self assert: (encoder transform: (DataFrame withRows: #( #( 'Male' 1 ) #( 'Female' 2 ) ))) equals: (DataFrame withRows: #( #( 2 2 ) #( 1 3 ) ))
 ]
+
+{ #category : #tests }
+AIOrdinalEncoderDataFrameTest >> testTransformWithMissingValue [
+
+	encoder categories: #( #( 'Female' 'Male' ) #( 3 1 2 ) ).
+
+	self should: [ encoder transform: (DataFrame withRows: #( #( 'Male' 1 ) #( 'NB' 2 ) )) ] raise: AIMissingCategory
+]

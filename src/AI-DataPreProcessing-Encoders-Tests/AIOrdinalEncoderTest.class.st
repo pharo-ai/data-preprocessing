@@ -59,3 +59,11 @@ AIOrdinalEncoderTest >> testTransform1DColl [
 	encoder categories: #( #( 'Female' 'Male' ) ).
 	self should: [ encoder transform: collection ] raise: AssertionFailure
 ]
+
+{ #category : #tests }
+AIOrdinalEncoderTest >> testTransformWithMissingValue [
+
+	encoder categories: #( #( 'Female' 'Male' ) #( 3 1 2 ) ).
+
+	self should: [ encoder transform: #( #( 'Male' 1 ) #( 'NB' 2 ) ) ] raise: AIMissingCategory
+]

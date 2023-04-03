@@ -9,5 +9,5 @@ Collection >> dataPreProcessingEncodeWith: anEncoder [
 		  subColl withIndexCollect: [ :element :columnIndex |
 			  | category |
 			  category := cache at: columnIndex ifAbsentPut: [ ((anEncoder categories at: columnIndex) collectWithIndex: [ :elem :index | elem -> index ]) asDictionary ].
-			  category at: element ] ]
+			  category at: element ifAbsent: [ AIMissingCategory signalFor: element ] ] ]
 ]

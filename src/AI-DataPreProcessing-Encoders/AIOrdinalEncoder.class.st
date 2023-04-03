@@ -1,3 +1,11 @@
+"
+I am a simple encoder whose responsibility is to associate a number to each unique value of a 2D collection. (Can be a DataFrame)
+
+I can be fitted with a collection to compute the categories to use and then transform another collection (possibily the same one).
+All values of the collection to transform must be present in the collection used to fit the datas. 
+
+
+"
 Class {
 	#name : #AIOrdinalEncoder,
 	#superclass : #Object,
@@ -21,6 +29,12 @@ AIOrdinalEncoder >> categories [
 { #category : #accessing }
 AIOrdinalEncoder >> categories: anObject [
 	categories := anObject
+]
+
+{ #category : #accessing }
+AIOrdinalEncoder >> categoryAt: anIndex [
+
+	self categories at: anIndex
 ]
 
 { #category : #private }

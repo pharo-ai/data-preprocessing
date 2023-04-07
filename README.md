@@ -9,6 +9,22 @@
 
 Project including data pre-processing algo. We aim to include scaling, centering, normalization, binarization methods.
 
+- [data-preprocessing](#data-preprocessing)
+	- [How to install it?](#how-to-install-it)
+	- [How to depend on it?](#how-to-depend-on-it)
+	- [Quick Start](#quick-start)
+		- [Encoding](#encoding)
+		- [Normalization](#normalization)
+	- [Encoding](#encoding-1)
+		- [Ordinal Encoder](#ordinal-encoder)
+	- [Normalization](#normalization-1)
+		- [Min-Max Normalization (a.k.a. Rescaling)](#min-max-normalization-aka-rescaling)
+		- [Standardization](#standardization)
+		- [Usage](#usage)
+		- [How to define new normalization strategies?](#how-to-define-new-normalization-strategies)
+
+
+
 ## How to install it?
 
 To install the project, go to the Playground (Ctrl+OW) in your [Pharo](https://pharo.org/) image and execute the following Metacello script (select it and press Do-it button or Ctrl+D):
@@ -192,7 +208,7 @@ normalizedNumbers := normalizer normalize: numbers. "#(0.0169 0.004 0.0109 0.008
 restoredNumbers := normalizer restore: normalizedNumbers. "#(10 -3 4 2 -7 1000 0.1 -4.05)"
 ```
 
-## How to define new normalization strategies?
+### How to define new normalization strategies?
 
 Normalization is implemented using a [strategy design pattern](https://en.wikipedia.org/wiki/Strategy_pattern). The `AI-Normalization` defines an abstract class `AINormalizer` which has two abstract methods `AINormalizer class >> normalize: aCollection` and `AINormalizer class >> restore: aCollection`. To define a normalization strategy, please implement a subclass of `AINormalizer` and provide your own definitions of `normalize:` and `restore:` methods. Keep in mind that those methods must not modify the given collection but return a new one.
 

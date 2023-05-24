@@ -30,7 +30,7 @@ BaselineOfAIDataPreProcessing >> baseline: spec [
 			group: 'Encoders' with: #( 'AI-DataPreProcessing-Encoders' 'AI-DataPreProcessing-Encoders-Tests' );
 			group: 'Normalizers' with: #( 'AI-DataPreProcessing-Normalization' );
 			group: 'DataFrame' with: #( 'AI-DataPreProcessing-Encoders-DataFrame-Tests' 'AI-DataPreProcessing-Normalization-Tests' );
-			group: 'Tests' with: #( 'AI-DataPreProcessing-Encoders-Tests' ) ]
+			group: 'Tests' with: #( 'AI-DataPreProcessing-Encoders-Tests' 'AI-DataPreProcessing-Normalization-Tests' ) ]
 ]
 
 { #category : #dependencies }
